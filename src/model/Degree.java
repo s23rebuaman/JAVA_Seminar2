@@ -1,5 +1,5 @@
 package model;
 
 public enum Degree {
-	bcs, mg, dr, other, unknown
+	bsc, mg, dr, other, unknown
 }

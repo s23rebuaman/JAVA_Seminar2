@@ -63,7 +63,7 @@ public class Professor {
 			setP_ID();
 			setName("Testa");
 			setSurname("Profesors");
-			setDegree("Students");
+			setDegree(Degree.bsc);
 		}
 		
 		//5. argumenta konstruktors ---------------------------------------------------
@@ -76,7 +76,7 @@ public class Professor {
 
 		@Override
 		public String toString() {
-			return "Professor [p_ID=" + p_ID + ", name=" + name + ", surname=" + surname + ", degree=" + degree + "]";
+			return p_ID + ": " + name + " " + surname + " " + degree;
 		}
 		
 		//6. toString funkcija ---------------------------------------------------
