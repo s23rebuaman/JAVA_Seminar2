@@ -30,7 +30,7 @@ public class Student {
 		this.name = name;
 	}
 	*/
-	public void setName(String inputName) {
+	public void setName(String inputName) { //ja ir referenču datu tips, jāpārbauda ar is null
 		if(inputName != null && inputName.matches("[A-Z]{1}[a-z]{3,10}([ ][A-Z]{1}[a-z]{3,10})?")) {
 			name = inputName;
 		}
@@ -41,10 +41,10 @@ public class Student {
 	
 	public void setSurname(String inputSurname) {
 		if(inputSurname != null && inputSurname.matches("[A-Z]{1}[a-z]{3,10}([-][A-Z]{1}[a-z]{3,10})?")) {
-			name = inputSurname;
+			surname = inputSurname;
 		}
 		else {
-			name = "Unknown";
+			surname = "Unknown";
 		}
 	}
 	
