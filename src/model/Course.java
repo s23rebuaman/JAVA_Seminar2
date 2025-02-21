@@ -76,7 +76,7 @@ public class Course {
 
 		//6. toString funkcija ---------------------------------------------------
 		public String toString() {
-			return c_ID + ": " + title + " (" + creditPoints + " KP)" + professor.getName().charAt(0) + ". " + professor.getSurname();
+			return c_ID + ": " + title + " (" + creditPoints + " KP) " + professor.getName().charAt(0) + ". " + professor.getSurname();
 		}
 		
 		//7. citas funkijas (ja nepieciešams) ---------------------------------------------------
