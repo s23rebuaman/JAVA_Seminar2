@@ -4,6 +4,7 @@ public class Grade {
 	//1. mainīgie ---------------------------------------------------
 	private long g_ID;
 	private int grValue;
+	private Student student;
 	private Course course;
 	
 	private static long counter = 30000;
@@ -13,8 +14,12 @@ public class Grade {
 		return g_ID;
 	}
 	
-	public int getValue(){
+	public int getGrValue(){
 		return grValue;
+	}
+	
+	public Student getStudent() {
+		return student;
 	}
 	
 	public Course getCourse(){
@@ -30,12 +35,21 @@ public class Grade {
 		this.name = name;
 	}
 	*/
-	public void setValue(int inputGrValue) { //ja ir referenču datu tips, jāpārbauda ar is null
+	public void setGrValue(int inputGrValue) {
 		if(inputGrValue > 0 && inputGrValue <= 10) {
 			grValue = inputGrValue;
 		}
 		else {
 			grValue = 0;
+		}
+	}
+	
+	public void setStudent(Student inputStuent) {
+		if(inputStuent != null) {
+			student = inputStuent;
+		}
+		else {
+			student = new Student();
 		}
 	}
 	
@@ -51,14 +65,16 @@ public class Grade {
 	//4. bez arguemnta konstruktors ---------------------------------------------------
 	public Grade() {
 		setG_ID();
-		setValue(9);
+		setGrValue(9);
+		setStudent(new Student());
 		setCourse(new Course());
 	}
 	
 	//5. argumenta konstruktors ---------------------------------------------------
-	public Grade(int inputGrValue, Course inputCourse) {
+	public Grade(int inputGrValue, Student inputStudent, Course inputCourse) {
 		setG_ID();
-		setValue(inputGrValue);
+		setGrValue(inputGrValue);
+		setStudent(inputStudent);
 		setCourse(inputCourse);
 	}
 	
@@ -66,7 +82,7 @@ public class Grade {
 	//pārrakstam object klases String funkciju
 	@Override
 	public String toString() {
-		return g_ID + ": " + grValue + " " + course;
+		return g_ID + ": " + grValue + " (" + course.getTitle() + ") -> " + student.getName().charAt(0) + ". " + student.getSurname();
 	}
 	/*
 	@Override

@@ -44,14 +44,14 @@ public class MainService {
 		System.out.println(c3); 
 		
 		System.out.println("-----------------------------ATZIMES------------------------------");
-		Grade a1 = new Grade();
-		System.out.println(a1); 
+		Grade g1 = new Grade();
+		System.out.println(g1); 
 		
-		Grade a2 = new Grade(6, c2);
-		System.out.println(a2); 
+		Grade g2 = new Grade(6, st2, c2);
+		System.out.println(g2); 
 		
-		Grade a3 = new Grade(34, c3);
-		System.out.println(a3); 
+		Grade g3 = new Grade(34, st4, c3);
+		System.out.println(g3); 
 		
 	}
 
