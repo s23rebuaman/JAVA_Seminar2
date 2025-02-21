@@ -53,9 +53,12 @@ public class MainService {
 		//System.out.println(p3); //3:
 		
 		allProfessors.addAll(Arrays.asList(p1, p2, p3));
+		System.out.println(allProfessors);
 		
 		try {
 			createProfessor("Karlis", "Immers", Degree.mg);
+			createProfessor("Raita", "Rollande", Degree.dr);
+			createProfessor("Juris", "Zagars", Degree.dr);
 			//createProfessor("Karlis", "Immers", Degree.mg);//sagaidu izņēmumu
 			System.out.println("Pievienots jauns profesors:" + allProfessors);
 			System.out.println("10001 profesors: " + retrieveProfessorById(10001));
@@ -65,6 +68,8 @@ public class MainService {
 			
 			deleteProfessorById(10000);
 			System.out.println("Izdzēsts testa profesors: " + allProfessors);
+			
+			System.out.println("Profesori ar dr grādu: " + filterProfessorByDegree(Degree.dr));
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -148,6 +153,20 @@ public class MainService {
 	public static void deleteProfessorById(int id) throws Exception{
 		Professor foundProfessor = retrieveProfessorById(id);
 		allProfessors.remove(foundProfessor);
+	}
+	
+	// Profesoru filtrēšana pēc grāda ------------------
+	public static ArrayList<Professor> filterProfessorByDegree(Degree inputDegree) throws Exception{
+		if(inputDegree == null) {
+			throw new Exception("Nav pareizi ievadīti dati par grādu");
+		}
+		ArrayList<Professor> results = new ArrayList<Professor>();
+		for(Professor tempP : allProfessors) {
+			if(tempP.getDegree().equals(inputDegree)) {
+				results.add(tempP);
+			}
+		}
+		return results;
 	}
 
 }
