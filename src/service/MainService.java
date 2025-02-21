@@ -82,5 +82,24 @@ public class MainService {
 		System.out.println(allGrades);
 		
 	}
+	
+	//CRUD - create, read, update, delete
+	//C - create
+	public static void createProfessor(String name, String surname, Degree degree) throws Exception {
+		//Pārbauda, vai tāds profesors jau eksistē
+		for(Professor tempP : allProfessors) { //vai sakrīt šis vārds
+			if(tempP.getName().equals(name)  //ar to vārdu kas šeit padots
+					&& tempP.getSurname().equals(surname)
+					&& tempP.getDegree().equals(degree)) 
+			{
+				throw new Exception("Tāds profesors jau eskistē sistēmā");
+			}
+		}
+		
+		//Professor newProfessor = new Professor(name, surname, degree);
+		//allProfessors.add(newProfessor);
+		allProfessors.add(new Professor(name, surname, degree));
+		
+	}
 
 }
