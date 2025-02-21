@@ -57,11 +57,14 @@ public class MainService {
 		try {
 			createProfessor("Karlis", "Immers", Degree.mg);
 			//createProfessor("Karlis", "Immers", Degree.mg);//sagaidu izņēmumu
+			System.out.println(allProfessors);
+			System.out.println("10001 profesors: " + retrieveProfessorById(10001));
+			updateProfessorById(10001, "Karina", "Krinkele", Degree.dr);
+			System.out.println(allProfessors);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println(allProfessors);
 		
 		System.out.println("-----------------------------KURSI------------------------------");
 		Course c1 = new Course();
@@ -121,6 +124,20 @@ public class MainService {
 			}
 		}
 		throw new Exception("Profesors ar norādīto id neeksitsē");
+	}
+	
+	//U - update
+	public static void updateProfessorById(int id, String inputName, String inputSurname, Degree inputDegree) throws Exception{
+		Professor foundProfessor = retrieveProfessorById(id);
+		if(inputName != null && !foundProfessor.getName().equals(inputName)) {
+			foundProfessor.setName(inputName);
+		}
+		if(inputSurname != null && !foundProfessor.getSurname().equals(inputSurname)) {
+			foundProfessor.setSurname(inputSurname);
+		}
+		if(inputDegree != null && !foundProfessor.getDegree().equals(inputDegree)) {
+			foundProfessor.setDegree(inputDegree);
+		}
 	}
 
 }
