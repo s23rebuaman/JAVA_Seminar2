@@ -67,20 +67,17 @@ public class Course {
 		}
 		
 		//5. argumenta konstruktors ---------------------------------------------------
-		public Course(String title, int CreditPoints, Professor professor) {
+		public Course(String inputTitle, int inputCreditPoints, Professor inputProfessor) {
 			setC_ID();
-			setTitle("Testa kurss");
-			setCreditPoints(1);
-			setProfessor(new Professor());
+			setTitle(inputTitle);
+			setCreditPoints(inputCreditPoints);
+			setProfessor(inputProfessor);
 		}
 
-		@Override
-		public String toString() {
-			return p_ID + ": " + name + " " + surname + " " + degree;
-		}
-		
 		//6. toString funkcija ---------------------------------------------------
-		
+		public String toString() {
+			return c_ID + ": " + title + " (" + creditPoints + " KP)" + professor.getName().charAt(0) + ". " + professor.getSurname();
+		}
 		
 		//7. citas funkijas (ja nepieciešams) ---------------------------------------------------
 		
