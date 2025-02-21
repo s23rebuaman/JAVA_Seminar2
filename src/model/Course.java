@@ -49,29 +49,29 @@ public class Course {
 			}
 		}
 		
-		public void setprofessor(Professor inputProfessor) {
+		public void setProfessor(Professor inputProfessor) {
 			if(inputProfessor != null) {
 				professor = inputProfessor;
 			}
 			else{
-				professor = Professor;
+				professor = new Professor();
 			}
 		}
 		
 		//4. bez arguemnta konstruktors ---------------------------------------------------
-		public Professor() {
+		public Course() {
 			setC_ID();
-			setTitle("Testa");
-			setCreditPoints("Profesors");
-			setProfessor(Degree.bsc);
+			setTitle("Testa kurss");
+			setCreditPoints(1);
+			setProfessor(new Professor());
 		}
 		
 		//5. argumenta konstruktors ---------------------------------------------------
-		public Professor(String title, int CreditPoints, Professor professor) {
+		public Course(String title, int CreditPoints, Professor professor) {
 			setC_ID();
-			setTitle("Testa");
-			setCreditPoints("Profesors");
-			setProfessor(Degree.bsc);
+			setTitle("Testa kurss");
+			setCreditPoints(1);
+			setProfessor(new Professor());
 		}
 
 		@Override
