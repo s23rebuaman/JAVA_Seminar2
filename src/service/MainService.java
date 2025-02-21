@@ -86,13 +86,14 @@ public class MainService {
 		
 		Course c3 = new Course("Datu stdtfe6t75", 3, p3);
 		//System.out.println(c3); 
+		Course c4 = new Course("Datu struktūra", 6, p2);
+		Course c5;
 		try {
-			Course c4 = new Course("Tīmekļa operētājsistēmas", 6, retrieveProfessorById(10003));
-			allCourses.addAll(Arrays.asList(c1, c2, c3, c4));
+			c5 = new Course("Tīmekļa operētājsistēmas", 6, retrieveProfessorById(10003));
+			allCourses.addAll(Arrays.asList(c1, c2, c3, c4, c5));
 		
-		
-		allCourses.addAll(Arrays.asList(c1, c2, c3));
-		System.out.println(allCourses);
+			System.out.println(allCourses);
+			System.out.println("Profesore K. Krinkele vada: " + howManyCoursesAreLeadByProfessorById(10001) + " kursus");
 		
 		System.out.println("-----------------------------ATZIMES------------------------------");
 		Grade g1 = new Grade();
@@ -110,6 +111,7 @@ public class MainService {
 		allGrades.addAll(Arrays.asList(g1, g2, g3, g4, g5));
 		System.out.println(allGrades);
 		System.out.println("Jāņa vidējā atzīme: " + calculateAverageGradeForStudentById(1));
+		System.out.println(retrieveAllFailedGrades());
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -211,10 +213,35 @@ public class MainService {
 				return tempS;
 			}
 		}
-		throw new Exception("Srofesors ar norādīto id neeksitsē");
+		throw new Exception("Students ar norādīto id neeksitsē");
 	}
 	
 	// uztaisīt kādam no pasniedzējiem vēl vienu kursu
+	
 	// aprēķināt cik kursus pasniedz konkrētais pasniedzējs
-
+	public static int howManyCoursesAreLeadByProfessorById(int id) throws Exception{
+		Professor foundProfessor = retrieveProfessorById(id);
+		int howManyCourses = 0;
+		for(Course tempC : allCourses) {
+			if(tempC.getPrpfessor().getP_ID() == id) {
+				howManyCourses++;
+			}
+		}
+		if(howManyCourses == 0){
+			throw new Exception("wow");
+		}
+		return howManyCourses;
+	}
+	
+	// izfiltrē un atgriež visas nesekmīgās atzīmes
+	public static ArrayList<Grade> retrieveAllFailedGrades() throws Exception{
+		ArrayList<Grade> results = new ArrayList<Grade>();
+		for(Grade tempG : allGrades) {
+			if(tempG.getGrValue() < 4){
+				results.add(tempG);
+			}
+		}
+		return results;
+	}
+	//saskaita, cik ir kursi pie noteikta CP skaita (CP->KP, cik ir kursi tiesi ar 2KP)
 }
