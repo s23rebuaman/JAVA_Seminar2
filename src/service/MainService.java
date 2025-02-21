@@ -53,6 +53,14 @@ public class MainService {
 		//System.out.println(p3); //3:
 		
 		allProfessors.addAll(Arrays.asList(p1, p2, p3));
+		
+		try {
+			createProfessor("Karlis", "Immers", Degree.mg);
+			//createProfessor("Karlis", "Immers", Degree.mg);//sagaidu izņēmumu
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		System.out.println(allProfessors);
 		
 		System.out.println("-----------------------------KURSI------------------------------");
@@ -83,7 +91,7 @@ public class MainService {
 		
 	}
 	
-	//CRUD - create, read, update, delete
+	//CRUD - create, retrieve, update, delete
 	//C - create
 	public static void createProfessor(String name, String surname, Degree degree) throws Exception {
 		//Pārbauda, vai tāds profesors jau eksistē
@@ -100,6 +108,19 @@ public class MainService {
 		//allProfessors.add(newProfessor);
 		allProfessors.add(new Professor(name, surname, degree));
 		
+	}
+	
+	//R - retrieve
+	public static Professor retrieveProfessorById(int id) throws Exception {
+		if(id < 0) {
+			throw new Exception("Id nevar būt negatīvs");
+		}
+		for(Professor tempP : allProfessors) {
+			if(tempP.getP_ID() == id) {
+				return tempP;
+			}
+		}
+		throw new Exception("Profesors ar norādīto id neeksitsē");
 	}
 
 }
