@@ -31,6 +31,8 @@ public class MainService {
 		Student st4 = new Student("1234kcdljhceghcv", "Skirm$ante");
 		//System.out.println(st4); //3: Unknown Unknown
 		
+		Student st5 = new Student("Laura", "Gudra");
+		
 		/*
 		allStudents.add(st1);
 		allStudents.add(st2);
@@ -84,6 +86,10 @@ public class MainService {
 		
 		Course c3 = new Course("Datu stdtfe6t75", 3, p3);
 		//System.out.println(c3); 
+		try {
+			Course c4 = new Course("Tīmekļa operētājsistēmas", 6, retrieveProfessorById(10003));
+			allCourses.addAll(Arrays.asList(c1, c2, c3, c4));
+		
 		
 		allCourses.addAll(Arrays.asList(c1, c2, c3));
 		System.out.println(allCourses);
@@ -92,14 +98,22 @@ public class MainService {
 		Grade g1 = new Grade();
 		//System.out.println(g1); 
 		
-		Grade g2 = new Grade(6, st2, c2);
+		Grade g2 = new Grade(10, st2, c2);
 		//System.out.println(g2); 
 		
 		Grade g3 = new Grade(34, st4, c3);
 		//System.out.println(g3); 
 		
-		allGrades.addAll(Arrays.asList(g1, g2, g3));
+		Grade g4 = new Grade(9, st2, c3);
+		Grade g5 = new Grade(4, st5, c2);
+		
+		allGrades.addAll(Arrays.asList(g1, g2, g3, g4, g5));
 		System.out.println(allGrades);
+		System.out.println("Jāņa vidējā atzīme: " + calculateAverageGradeForStudentById(1));
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -168,5 +182,39 @@ public class MainService {
 		}
 		return results;
 	}
+	
+	// vidējās atzīmes aprēkināšanu, ja padod studenta id
+	public static float calculateAverageGradeForStudentById(int id) throws Exception {
+		retrieveStudentById(id); //pārbaudam, vai students vispātr eksist;e, ja eskistē, turpinam, ja nē, izmet izņēmumu
+		
+		int howManyGrades = 0;
+		float sum = 0;
+		for(Grade tempG : allGrades) {
+			if(tempG.getStudent().getStID() == id) {
+				howManyGrades++;
+				sum += tempG.getGrValue();
+				//System.out.println(tempG);
+			}
+		}
+		if(howManyGrades == 0) {
+			throw new Exception("Studentam nav piesaistīta neviena atzīme");
+		}
+		return sum/howManyGrades;
+	}
+	
+	public static Student retrieveStudentById(int id) throws Exception {
+		if(id < 0) {
+			throw new Exception("Id nevar būt negatīvs");
+		}
+		for(Student tempS : allStudents) {
+			if(tempS.getStID() == id) {
+				return tempS;
+			}
+		}
+		throw new Exception("Srofesors ar norādīto id neeksitsē");
+	}
+	
+	// uztaisīt kādam no pasniedzējiem vēl vienu kursu
+	// aprēķināt cik kursus pasniedz konkrētais pasniedzējs
 
 }
