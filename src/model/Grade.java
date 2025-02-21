@@ -3,10 +3,10 @@ package model;
 public class Grade {
 	//1. mainīgie ---------------------------------------------------
 	private long g_ID;
-	private int value;
+	private int grValue;
 	private Course course;
 	
-	private static long counter = 0;
+	private static long counter = 30000;
 	
 	//2. getters ---------------------------------------------------
 	public long getG_ID(){
@@ -14,7 +14,7 @@ public class Grade {
 	}
 	
 	public int getValue(){
-		return value;
+		return grValue;
 	}
 	
 	public Course getCourse(){
@@ -30,12 +30,12 @@ public class Grade {
 		this.name = name;
 	}
 	*/
-	public void setValue(int inputValue) { //ja ir referenču datu tips, jāpārbauda ar is null
-		if(inputValue > 0 && inputValue <= 10) {
-			value = inputValue;
+	public void setValue(int inputGrValue) { //ja ir referenču datu tips, jāpārbauda ar is null
+		if(inputGrValue > 0 && inputGrValue <= 10) {
+			grValue = inputGrValue;
 		}
 		else {
-			value = 0;
+			grValue = 0;
 		}
 	}
 	
@@ -56,9 +56,9 @@ public class Grade {
 	}
 	
 	//5. argumenta konstruktors ---------------------------------------------------
-	public Grade(int inputVlaue, Course inputCourse) {
+	public Grade(int inputGrValue, Course inputCourse) {
 		setG_ID();
-		setValue(inputVlaue);
+		setValue(inputGrValue);
 		setCourse(inputCourse);
 	}
 	
@@ -66,7 +66,7 @@ public class Grade {
 	//pārrakstam object klases String funkciju
 	@Override
 	public String toString() {
-		return g_ID + ": " + value + " " + course;
+		return g_ID + ": " + grValue + " " + course;
 	}
 	/*
 	@Override

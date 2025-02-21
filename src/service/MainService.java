@@ -4,6 +4,7 @@ import model.Student;
 import model.Professor;
 import model.Degree;
 import model.Course;
+import model.Grade;
 
 public class MainService {
 
@@ -34,13 +35,23 @@ public class MainService {
 		
 		System.out.println("-----------------------------KURSI------------------------------");
 		Course c1 = new Course();
-		System.out.println(c1); //0: Testa Profesors bsc
+		System.out.println(c1); 
 		
 		Course c2 = new Course("Java programmesana", 6, p2);
-		System.out.println(c2); //1: Karina Skirtmane
+		System.out.println(c2); 
 		
 		Course c3 = new Course("Datu stdtfe6t75", 3, p3);
-		System.out.println(c3); //3:
+		System.out.println(c3); 
+		
+		System.out.println("-----------------------------ATZIMES------------------------------");
+		Grade a1 = new Grade();
+		System.out.println(a1); 
+		
+		Grade a2 = new Grade(6, c2);
+		System.out.println(a2); 
+		
+		Grade a3 = new Grade(34, c3);
+		System.out.println(a3); 
 		
 	}
 
